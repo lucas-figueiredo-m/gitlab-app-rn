@@ -79,9 +79,20 @@ import com.android.build.OutputFile
 
 project.ext.react = [
     enableHermes: false,  // clean and rebuild if changing
+    devDisabledInStaging: true,
+    bundleInStaging: true
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
+
+project.ext.envConfigFiles = [
+    debug: ".env.development",
+    release: ".env.production",
+    staging: ".env.staging",
+]
+
+
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 
 /**
  * Set this to true to create two separate APKs instead of one:
@@ -158,6 +169,14 @@ android {
             signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            matchingFallbacks = ['release']
+        }
+        staging {
+            // initWith release
+            signingConfig signingConfigs.debug
+            minifyEnabled enableProguardInReleaseBuilds
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            matchingFallbacks = ['release']
         }
     }
 

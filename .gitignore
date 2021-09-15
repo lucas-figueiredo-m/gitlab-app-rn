@@ -7,6 +7,8 @@
 .env.development
 .env.staging
 .env.production
+# react-native-config codegen
+ios/tmp.xcconfig
 
 # Xcode
 #

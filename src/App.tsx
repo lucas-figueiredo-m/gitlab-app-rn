@@ -1,24 +1,21 @@
-import React from 'react'
-import {
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+import React from 'react';
+import {ApolloClient, InMemoryCache, ApolloProvider} from '@apollo/client';
+import Screen from './screens/AuthScreen';
+import Config from 'react-native-config';
 
-const styles = StyleSheet.create({
-  root: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-})
+// Initialize Apollo Client
+const client = new ApolloClient({
+  uri: 'https://gitlab.com/api/graphql/',
+  cache: new InMemoryCache(),
+  headers: {Authorization: `Bearer ${Config.GITLAB_TOKEN}`},
+});
 
 const App: React.FC = () => {
   return (
-    <View style={styles.root}>
-      <Text>Hello World</Text>
-    </View>
+    <ApolloProvider client={client}>
+      <Screen />
+    </ApolloProvider>
   );
-}
+};
 
 export default App;
