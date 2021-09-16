@@ -1,7 +1,5 @@
 module.exports = {
-  // root: true,
   extends: [
-    '@react-native-community',
     'airbnb-typescript',
     'eslint-config-prettier',
     'eslint:recommended',
@@ -19,11 +17,21 @@ module.exports = {
   },
   env: {
     jest: true,
+    node: true,
+    es6: true
   },
   rules: {
-    'react/jsx-filename-extension': [
-      1,
-      {extensions: ['.js', '.jsx', '.ts', '.tsx']},
+    'react/jsx-filename-extension': [0],
+    "import/no-extraneous-dependencies": [0, {"devDependencies": false, "optionalDependencies": false, "peerDependencies": false}],
+    "import/extensions": [
+      0,
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
     ],
     camelcase: 'off',
     'react/no-array-index-key': 'off',

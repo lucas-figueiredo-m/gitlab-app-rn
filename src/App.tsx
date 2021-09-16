@@ -1,7 +1,7 @@
 import React from 'react';
 import {ApolloClient, InMemoryCache, ApolloProvider} from '@apollo/client';
-import Screen from './screens/AuthScreen';
 import Config from 'react-native-config';
+import Router from 'navigation';
 
 // Initialize Apollo Client
 const client = new ApolloClient({
@@ -13,7 +13,7 @@ const client = new ApolloClient({
 const App: React.FC = () => {
   return (
     <ApolloProvider client={client}>
-      <Screen />
+      <Router />
     </ApolloProvider>
   );
 };
