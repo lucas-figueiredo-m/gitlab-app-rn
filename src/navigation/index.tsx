@@ -1,16 +1,22 @@
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
+import { createStackNavigator, CardStyleInterpolators, StackNavigationProp } from '@react-navigation/stack';
 
 import { RootRoutes } from "navigation/config/routes";
 import React from 'react';
 
-import AuthScreen from 'screens/AuthScreen';
 import SplashScreen from 'screens/SplashScreen';
+import TabNavigator from './navigators/TabNavigator';
 
 export type RootStackParamList = {
   [RootRoutes.SPLASH_SCREEN]: undefined,
-  [RootRoutes.AUTH_SCREEN]: undefined
+  [RootRoutes.TAB_NAVIGATOR]: undefined
 }
+
+
+export type SplashNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  RootRoutes.SPLASH_SCREEN
+>
 
 const RootStack = createStackNavigator<RootStackParamList>();
 
@@ -25,7 +31,7 @@ const Router: React.FC = () => {
         }}
       >
         <RootStack.Screen name={RootRoutes.SPLASH_SCREEN} component={SplashScreen} />
-        <RootStack.Screen name={RootRoutes.AUTH_SCREEN} component={AuthScreen} />
+        <RootStack.Screen name={RootRoutes.TAB_NAVIGATOR} component={TabNavigator} />
       </RootStack.Navigator>
     </NavigationContainer>
   )
