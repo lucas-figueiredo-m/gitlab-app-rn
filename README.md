@@ -12,7 +12,7 @@
 </div>
 -->
 
-> This project was built to practice UI design and play with Gitlab API
+> This project was built to practice UI design and play with Gitlab API, making a usefull app for Gitlab just like Github mobile App
 
 
 
@@ -24,6 +24,7 @@
 - [x] react-native-config for setting up environment variables
 - [x] react-i18n-next for supporting internationalization
 - [x] Debugging with Flipper
+- [x] Gitlab API
 
 
 
